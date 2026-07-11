@@ -6,14 +6,17 @@ function loadBorrowers() {
 const paid = JSON.parse(localStorage.getItem("paid") || "[]");
 const paidList = document.getElementById("paidList");
 
-paidList.innerHTML = "";
+if (paidList) {
+    paidList.innerHTML = "";
 
-paid.forEach((p) => {
-    paidList.innerHTML += `
-    <div class="borrower">
-        <b>${p.name} ✅</b>
-    </div>`;
-});
+    paid.forEach((p) => {
+        paidList.innerHTML += `
+        <div class="borrower">
+            <b>${p.name} ✅</b><br>
+            Paid Date: ${p.paidDate}
+        </div>`;
+    });
+}
 
     borrowers.forEach((b, index) => {
         const parts = b.date.split("-");
