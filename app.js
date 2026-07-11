@@ -7,13 +7,17 @@ function loadBorrowers() {
         const startDate = new Date(b.date);
         const today = new Date();
 
-        const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        let totalDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
 
-        const monthlyInterest = (b.amount * b.rate) / 100;
-        const dailyInterest = monthlyInterest / 30;
-        const interest = dailyInterest * days;
+const months = Math.floor(totalDays / 30);
+const remainingDays = totalDays % 30;
 
-        const total = Number(b.amount) + interest;
+const monthlyInterest = (b.amount * b.rate) / 100;
+const dailyInterest = monthlyInterest / 30;
+
+const interest = (monthlyInterest * months) + (dailyInterest * remainingDays);
+
+const total = Number(b.amount) + interest;
 
         list.innerHTML += `
         <div class="borrower">
