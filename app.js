@@ -11,7 +11,6 @@ function loadBorrowers() {
 today.setHours(0,0,0,0);
 
 let totalDays = Math.round((today - startDate) / (1000 * 60 * 60 * 24));
-if (totalDays > 0) totalDays--;
 
 const months = Math.floor(totalDays / 30);
 const remainingDays = totalDays % 30;
