@@ -24,7 +24,7 @@ const total = Number(b.amount) + interest;
             <b>${b.name}</b><br>
             Date Taken: ${b.date}<br>
             Amount: ₹${b.amount}<br>
-            Days: ${days}<br>
+            Duration: ${months} Month ${remainingDays} Days<br>
             Interest Till Today: ₹${interest.toFixed(2)}<br>
             Total Due: ₹${total.toFixed(2)}
         </div>`;
