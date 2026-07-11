@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chandan Khata</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#f2f2f2;
+}
+
+header{
+background:#0d6efd;
+color:white;
+padding:15px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+}
+
+.container{
+padding:15px;
+}
+
+.card{
+background:white;
+padding:15px;
+margin-bottom:15px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+box-sizing:border-box;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+background:#0d6efd;
+color:white;
+border-radius:8px;
+font-size:16px;
+}
+
+.borrower{
+padding:10px;
+border-bottom:1px solid #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<header>💰 Chandan Khata</header>
+
+<div class="container">
+
+<div class="card">
+
+<h3>Add Borrower</h3>
+
+<input id="name" placeholder="Borrower Name">
+
+<input id="amount" type="number" placeholder="Amount">
+
+<input id="rate" type="number" placeholder="Monthly Interest %">
+
+<button onclick="saveBorrower()">Save Borrower</button>
+
+</div>
+
+<div class="card">
+
+<h3>Borrowers</h3>
+
+<div id="list"></div>
+
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
