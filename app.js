@@ -17,8 +17,9 @@ if (paidList) {
             Date Taken: ${p.date}<br>
             Interest Rate: ${p.rate}% per month<br>
             Paid Date: ${p.paidDate}<br>
+Final Amount Paid: ₹${p.totalPaid || p.amount}<br>
 
-            <button onclick="deletePaid(${index})">🗑️</button>
+<button onclick="deletePaid(${index})">🗑️</button>
         </div>`;
     });
 }
@@ -142,9 +143,10 @@ function markPaid(index) {
     const person = borrowers[index];
 
     paid.push({
-        ...person,
-        paidDate: new Date().toISOString().split("T")[0]
-    });
+    ...person,
+    paidDate: new Date().toISOString().split("T")[0],
+    finalAmount: document.querySelector("h3").innerText
+});
 
     borrowers.splice(index, 1);
 
