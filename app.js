@@ -9,11 +9,16 @@ const paidList = document.getElementById("paidList");
 if (paidList) {
     paidList.innerHTML = "";
 
-    paid.forEach((p) => {
+    paid.forEach((p, index) => {
         paidList.innerHTML += `
         <div class="borrower">
             <b>${p.name} ✅</b><br>
-            Paid Date: ${p.paidDate}
+            Amount: ₹${p.amount}<br>
+            Date Taken: ${p.date}<br>
+            Interest Rate: ${p.rate}% per month<br>
+            Paid Date: ${p.paidDate}<br>
+
+            <button onclick="deletePaid(${index})">🗑️</button>
         </div>`;
     });
 }
@@ -144,6 +149,16 @@ function markPaid(index) {
     borrowers.splice(index, 1);
 
     localStorage.setItem("borrowers", JSON.stringify(borrowers));
+    localStorage.setItem("paid", JSON.stringify(paid));
+
+    loadBorrowers();
+}
+
+function deletePaid(index) {
+    const paid = JSON.parse(localStorage.getItem("paid") || "[]");
+
+    paid.splice(index, 1);
+
     localStorage.setItem("paid", JSON.stringify(paid));
 
     loadBorrowers();
