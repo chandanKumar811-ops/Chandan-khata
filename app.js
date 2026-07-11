@@ -110,8 +110,28 @@ function showDetails(index) {
         Total Due: ₹${total.toFixed(2)}
         <br><br>
         <button onclick="loadBorrowers()">Back</button>
-        <button onclick="deleteBorrower(${index})">Delete</button>
+<button onclick="markPaid(${index})">✅ Paid</button>
+<button onclick="deleteBorrower(${index})">🗑️</button>
     </div>`;
+}
+
+function markPaid(index) {
+    const borrowers = JSON.parse(localStorage.getItem("borrowers") || "[]");
+    const paid = JSON.parse(localStorage.getItem("paid") || "[]");
+
+    const person = borrowers[index];
+
+    paid.push({
+        ...person,
+        paidDate: new Date().toISOString().split("T")[0]
+    });
+
+    borrowers.splice(index, 1);
+
+    localStorage.setItem("borrowers", JSON.stringify(borrowers));
+    localStorage.setItem("paid", JSON.stringify(paid));
+
+    loadBorrowers();
 }
 
 window.onload = loadBorrowers;
