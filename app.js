@@ -3,7 +3,7 @@ function loadBorrowers() {
     const list = document.getElementById("list");
     list.innerHTML = "";
 
-    borrowers.forEach((b) => {
+    borrowers.forEach((b, index) => {
         const startDate = new Date(b.date);
         const today = new Date();
 
@@ -22,13 +22,15 @@ const total = Number(b.amount) + interest;
 
         list.innerHTML += `
         <div class="borrower">
-            <b>${b.name}</b><br>
-            Date Taken: ${b.date}<br>
-            Amount: ₹${b.amount}<br>
-            Duration: ${months} Month ${remainingDays} Days<br>
-            Interest Till Today: ₹${interest.toFixed(2)}<br>
-            Total Due: ₹${total.toFixed(2)}
-        </div>`;
+    <b>${b.name}</b><br>
+    Date Taken: ${b.date}<br>
+    Amount: ₹${b.amount}<br>
+    Duration: ${months} Month ${remainingDays} Days<br>
+    Interest Till Today: ₹${interest.toFixed(2)}<br>
+    Total Due: ₹${total.toFixed(2)}
+    <br>
+    <button onclick="deleteBorrower(${index})">Delete</button>
+</div>`;
     });
 }
 
@@ -58,6 +60,16 @@ function saveBorrower() {
     document.getElementById("amount").value = "";
     document.getElementById("rate").value = "";
     document.getElementById("date").value = "";
+
+    loadBorrowers();
+}
+
+function deleteBorrower(index) {
+    const borrowers = JSON.parse(localStorage.getItem("borrowers") || "[]");
+
+    borrowers.splice(index, 1);
+
+    localStorage.setItem("borrowers", JSON.stringify(borrowers));
 
     loadBorrowers();
 }
