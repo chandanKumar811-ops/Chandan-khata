@@ -142,3 +142,54 @@ function closeDetails() {
     document.getElementById("details").style.display = "none";
 }
 
+function showDetails(index) {
+
+    const borrowers = getBorrowers();
+    const b = borrowers[index];
+    const c = calculate(b);
+
+    document.getElementById("list").style.display = "none";
+    document.getElementById("search").style.display = "none";
+
+    const details = document.getElementById("details");
+    details.style.display = "block";
+
+    details.innerHTML = `
+        <div class="borrower">
+
+            <h2>${b.name}</h2>
+
+            <p><b>Amount:</b> ₹${b.amount}</p>
+
+            <p><b>Interest Rate:</b> ${b.rate}% per month</p>
+
+            <p><b>Date Taken:</b> ${b.date}</p>
+
+            <p><b>Duration:</b> ${c.months} Month ${c.remain} Days</p>
+
+            <p><b>Interest Till Today:</b> ₹${c.interest.toFixed(2)}</p>
+
+            <p><b>Total Due:</b> ₹${c.total.toFixed(2)}</p>
+
+            <br>
+
+            <button onclick="closeDetails()">⬅ Back</button>
+
+        </div>
+    `;
+}
+
+function closeDetails() {
+
+    document.getElementById("details").style.display = "none";
+
+    document.getElementById("list").style.display = "block";
+
+    document.getElementById("search").style.display = "block";
+
+}
+
+window.onload = function () {
+    loadBorrowers();
+};
+
