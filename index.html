@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandan Khata</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    💰 Chandan Khata
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Add Borrower</h2>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Borrower Name">
+
+        <input
+            type="number"
+            id="amount"
+            placeholder="Amount">
+
+        <input
+            type="number"
+            id="rate"
+            placeholder="Monthly Interest %">
+
+        <label>Date Taken</label>
+
+        <input
+            type="date"
+            id="date">
+
+        <button onclick="saveBorrower()">
+            ➕ Save Borrower
+        </button>
+    </div>
+
+    <div class="card">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search borrower..."
+            oninput="searchBorrowers()">
+
+        <h2>👥 Active Borrowers</h2>
+
+        <div id="list"></div>
+
+        <hr>
+
+        <h2>✅ Paid Borrowers</h2>
+
+        <div id="paidList"></div>
+
+    </div>
+
+    <div
+        id="details"
+        class="card"
+        style="display:none;">
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
