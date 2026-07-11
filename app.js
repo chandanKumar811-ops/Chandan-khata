@@ -68,3 +68,77 @@ function saveBorrower(){
 
     loadBorrowers();
 }
+
+function loadBorrowers(search = "") {
+
+    const borrowers = getBorrowers();
+    const list = document.getElementById("list");
+
+    list.innerHTML = "";
+
+    borrowers.forEach((b, index) => {
+
+        if (
+            b.name.toLowerCase().includes(search.toLowerCase())
+        ) {
+
+            list.innerHTML += `
+            <div class="borrower"
+                onclick="showDetails(${index})">
+                <b>${b.name}</b>
+            </div>
+            `;
+        }
+
+    });
+
+}
+
+function searchBorrowers() {
+
+    const text =
+        document.getElementById("search").value;
+
+    loadBorrowers(text);
+
+}
+
+function showDetails(index) {
+
+    const borrowers = getBorrowers();
+    const b = borrowers[index];
+
+    const c = calculate(b);
+
+    document.getElementById("details").style.display = "block";
+
+    document.getElementById("details").innerHTML = `
+        <h2>${b.name}</h2>
+
+        <p><b>Amount:</b> ₹${b.amount}</p>
+
+        <p><b>Interest:</b> ${b.rate}% / month</p>
+
+        <p><b>Date Taken:</b> ${b.date}</p>
+
+        <p><b>Duration:</b>
+        ${c.months} Month ${c.remain} Days</p>
+
+        <p><b>Interest:</b>
+        ₹${c.interest.toFixed(2)}</p>
+
+        <p><b>Total Due:</b>
+        ₹${c.total.toFixed(2)}</p>
+
+        <br>
+
+        <button onclick="closeDetails()">
+        ⬅ Back
+        </button>
+    `;
+}
+
+function closeDetails() {
+    document.getElementById("details").style.display = "none";
+}
+
