@@ -3,6 +3,18 @@ function loadBorrowers() {
     const list = document.getElementById("list");
     list.innerHTML = "";
 
+const paid = JSON.parse(localStorage.getItem("paid") || "[]");
+const paidList = document.getElementById("paidList");
+
+paidList.innerHTML = "";
+
+paid.forEach((p) => {
+    paidList.innerHTML += `
+    <div class="borrower">
+        <b>${p.name} ✅</b>
+    </div>`;
+});
+
     borrowers.forEach((b, index) => {
         const parts = b.date.split("-");
 const startDate = new Date(parts[0], parts[1] - 1, parts[2]);
