@@ -69,3 +69,12 @@ button{
 #paidList .borrower{
     border-left:5px solid green;
 }
+
+.borrower{
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.borrower:hover{
+    transform:scale(1.02);
+}
