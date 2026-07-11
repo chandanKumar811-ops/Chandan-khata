@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 15px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.borrower {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.borrower:hover {
+    background: #f0f8ff;
+}
+
+#search {
+    margin-bottom: 15px;
+}
+
+#paidList .borrower {
+    border-left: 5px solid green;
+}
+
+#list .borrower {
+    border-left: 5px solid #007bff;
+}
