@@ -1,0 +1,1 @@
+alert("Chandan Khata loaded successfully!");
