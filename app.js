@@ -7,7 +7,10 @@ function loadBorrowers() {
         const startDate = new Date(b.date);
         const today = new Date();
 
-        let totalDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        startDate.setHours(0,0,0,0);
+today.setHours(0,0,0,0);
+
+let totalDays = Math.round((today - startDate) / (1000 * 60 * 60 * 24));
 if (totalDays > 0) totalDays--;
 
 const months = Math.floor(totalDays / 30);
