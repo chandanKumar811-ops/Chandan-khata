@@ -4,8 +4,9 @@ function loadBorrowers() {
     list.innerHTML = "";
 
     borrowers.forEach((b, index) => {
-        const startDate = new Date(b.date);
-        const today = new Date();
+        const parts = b.date.split("-");
+const startDate = new Date(parts[0], parts[1] - 1, parts[2]);
+const today = new Date();
 
         startDate.setHours(0,0,0,0);
 today.setHours(0,0,0,0);
